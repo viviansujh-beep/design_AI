@@ -24,6 +24,14 @@ header {
     z-index: 1000;
 }
 
+/* 로고 이미지 스펙 조절 */
+.nav-logo {
+    height: 18px; /* 버튼 텍스트 높이와 비슷하게 맞춤 (피그마 시안에 따라 16px~20px 조절) */
+    width: auto;  /* 가로 비율 자동 유지 */
+    display: inline-block;
+    vertical-align: middle; /* 버튼 내에서 세로 중앙 정렬 */
+}
+
 .nav-bar {
     background-color: #FFFFFF;
     display: flex;
