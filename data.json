@@ -1,44 +1,45 @@
 [
   {
     "category": "프롬프트",
-    "title": "[일관성] 내 캐릭터를 포켓몬 주인공으로",
-    "image": "images/pokemon.png",
-    "link": "html/detail_pokemon.html"
-  },
-  {
-    "category": "AINote",
-    "title": "디자인 시스템 구축을 위한 AI 활용 가이드라인",
-    "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=60",
-    "link": "#"
+    "title": "3D 콜렉터블 토이 스타일 아이콘 – 질감별 프롬프트 모음",
+    "sub-title": "",
+    "output-image": "../images/294fdea8-0034-806a-926f-ef9b8beb4d41.png",
+    "prompts": [
+      {
+        "title": "PVC 매트 질감 프롬프트",
+        "prompt-text": "Create a 3D collectible toy-style icon of a cute (이름).\n\n⚠️ General Style Rules\n- This is NOT a flat or line icon. It must look like a real 3D PVC figure — rounded, soft, and solid with visible volume.\n- The surface should have a matte vinyl texture and smooth plastic material, similar to designer toy figures.\n- Use soft, even lighting to highlight its curves and dimension.\n- Keep the colors pastel and warm, giving it a cute, cozy mood.\n- No text, logos, or shadows should appear.\n- The background must be pure white (#FFFFFF) — clean and minimal.\n\n✨ Conditional Style Logic\nIF (이름) represents a living creature or character →\nAdd minimal, cute facial features (eyes, nose, mouth) in the same 3D PVC figure style.\nFacial expressions should be gentle, friendly, and not exaggerated.\nMaintain consistency in facial proportions and style typical of collectible toy figures.\n\nELSE IF (이름) represents a non-living object →\nDo NOT add any facial features such as eyes, nose, or mouth.\nKeep the object in its original form, emphasizing its shape, material, and contours only.\nFocus on realistic 3D modeling and surface detail without anthropomorphic traits."
+      },
+      {
+        "title": "보송보송 질감 프롬프트",
+        "prompt-text": "Create a 3D collectible toy-style icon of a cute (이름).\n\n⚠️ General Style Rules\n- This is NOT a flat or line icon. It must look like a real 3D suede or velvet figure — rounded, soft, and solid with visible volume.\n- The surface should have a fine, short fiber texture that feels soft to the touch, with a subtle sheen that changes slightly with lighting — resembling real suede or velvet fabric.\n- Emphasize the luxurious yet cozy softness, showing the tactile depth and light absorption unique to suede or velvet.\n- Use gentle, diffused lighting to accentuate the soft shadows, contours, and elegant fabric highlights.\n- Keep the colors pastel and warm, maintaining a premium yet comforting mood.\n- No text, logos, or shadows should appear.\n- The background must be pure white (#FFFFFF) — clean and minimal.\n\n✨ Conditional Style Logic\nIF (이름) represents a living creature or character →\nAdd minimal, cute facial features (eyes, nose, mouth) that harmonize with the soft suede or velvet style.\nFacial features should look natural within the plush aesthetic — smooth, friendly, and subtle.\n\nELSE IF (이름) represents a non-living object →\nDo NOT add any facial features.\nKeep the object realistic, highlighting the suede or velvet texture, lighting gradients, and soft tactile finish without anthropomorphic traits."
+      },
+      {
+        "title": "유리알 질감 프롬프트",
+        "prompt-text": "Create a 3D collectible toy-style icon of a cute (이름).\n\n⚠️ General Style Rules\n- This is NOT a flat or line icon. It must look like a real 3D glass figure — rounded, smooth, and perfectly polished with visible transparency and light refraction.\n- The surface should be crystal-clear and glossy, with soft reflections, refractions, and subtle caustic lighting effects that make it feel like real glass or crystal.\n- Emphasize the rounded, bubble-like silhouette — the object should appear as if it's made from blown glass, with soft edges and no harsh geometry.\n- Use bright, clean lighting that creates natural reflections and gentle highlights without hard shadows.\n- Maintain soft color tints (pastel tones or clear hues) that look translucent and luminous.\n- No text, logos, or external shadows should appear.\n- The background must be pure white (#FFFFFF) — clean, minimal, and bright enough to emphasize the transparency of the glass material.\n\n✨ Conditional Style Logic\nIF (이름) represents a living creature or character →\nAdd minimal, cute facial features (eyes, nose, mouth) that look embedded beneath or inside the glass surface, not drawn on top.\nFacial details should appear softly refracted, subtle, and integrated into the material — never opaque or cartoonish.\n\nELSE IF (이름) represents a non-living object →\nDo NOT add any facial features.\nKeep the object's realistic glass form, emphasizing light reflection, transparency, and curvature without anthropomorphic traits."
+      },
+      {
+        "title": "풍선 질감 프롬프트",
+        "prompt-text": "Create a 3D collectible toy-style icon of a cute (이름).\n\n⚠️ General Style Rules\nThis is NOT a flat or line icon. It must look like a real 3D inflated balloon figure — soft, round, and slightly reflective, as if filled with air.\nThe surface should have a smooth, glossy latex texture that shows gentle reflections and highlights, like real balloons or inflatable vinyl toys.\nEmphasize the puffed, air-filled volume, with subtle light gradients and tension on curved surfaces.\nUse bright, even lighting to accentuate reflections and the smooth roundness without harsh shadows.\nKeep the colors pastel and slightly translucent to enhance the balloon-like appearance.\nNo text, logos, or shadows should appear.\nThe background must be pure white (#FFFFFF) — clean, minimal, and bright.\n\n✨ Conditional Style Logic\nIF (이름) represents a living creature or character →\nAdd minimal, cute facial features (eyes, nose, mouth) that match the balloon style — soft, shiny, and slightly embossed as if printed on the surface.\nThe expression should be playful, friendly, and lighthearted.\n\nELSE IF (이름) represents a non-living object →\nDo NOT add any facial features.\nKeep the object's natural form, focusing on the inflated shape, air tension, and balloon texture without anthropomorphic traits."
+      },
+      {
+        "title": "메탈 질감 프롬프트",
+        "prompt-text": "Create a 3D collectible toy-style icon of a cute (이름).\n\n⚠️ General Style Rules\n- This is NOT a flat or line icon. It must look like a real 3D metallic sculpture — elegant, reflective, and slightly abstract in form.\n- The structure should combine smooth curves with sharp, pointed edges, giving it a dynamic, sculptural silhouette.\n- The surface must have a highly polished chrome or titanium texture, with mirror-like reflections and subtle color gradients (silver, rose-gold, or iridescent tones).\n- Emphasize fluid yet angular shapes, as if made from precision-molded metal.\n- Use strong, directional lighting to enhance the reflective highlights and metallic depth.\n- The overall impression should feel premium, futuristic, and artistic, like a designer object or abstract emblem.\n- No text, logos, or external shadows should appear.\n- The background must be pure black (#000000) or pure white (#FFFFFF) — clean and minimal to highlight reflections.\n\n✨ Conditional Style Logic\nIF (이름) represents a living creature or character →\nAdd minimal, sleek facial features (eyes, mouth) that appear subtly engraved or reflected on the metal surface — not painted or cartoon-like.\nFacial details should feel integrated into the metallic material, maintaining elegance.\n\nELSE IF (이름) represents a non-living object →\nDo NOT add any facial features.\nFocus purely on the form, emphasizing reflective metal surfaces, curvature, and the interplay of light across sharp edges and smooth arcs."
+      },
+      {
+        "title": "통합 프롬프트(JSON)",
+        "prompt-text": "{\n  \"name\": \"(이름)\",\n  \"type\": \"living | non-living\",\n  \"texture\": \"pvc | velvet | glass | balloon | metallic_sculpture\",\n  \"lighting\": \"auto\",\n  \"background\": \"#FFFFFF or #000000\",\n\n  \"prompt\": \"Create a 3D collectible toy-style icon of a cute (이름). This is NOT a flat or line icon. Follow the below style rules based on texture type.\\n\\n⚙️ GENERAL RULES:\\n- The object must be three-dimensional, soft in volume, and cleanly rendered.\\n- Use even, diffused lighting for soft materials and reflective, directional lighting for glossy ones.\\n- Keep the composition simple and centered.\\n- No text, logos, or external shadows.\\n- Background must be either pure white (#FFFFFF) or pure black (#000000).\\n\\n🎨 TEXTURE RULES:\\n\\n1️⃣ If texture = 'pvc':\\n- Matte vinyl texture, smooth and soft like a designer toy.\\n- Pastel warm tones, rounded shapes, and cute cozy mood.\\n\\n2️⃣ If texture = 'velvet':\\n- Short-fibered surface with subtle fabric sheen, cozy and elegant.\\n- Feels luxurious, soft to the touch, with diffused lighting that enhances depth.\\n\\n3️⃣ If texture = 'glass':\\n- Transparent, reflective, and glossy surface.\\n- Round, bubble-like form with refraction and caustic light effects.\\n- Light passes through softly, creating luminous reflections.\\n\\n4️⃣ If texture = 'balloon':\\n- Air-inflated shape with glossy latex surface.\\n- Slightly translucent, smooth, and shiny with curved reflections.\\n- Bright, cheerful tone with visible volume tension.\\n\\n5️⃣ If texture = 'metallic_sculpture':\\n- Highly polished chrome or titanium surface with mirror-like reflections.\\n- Form combines smooth curves and sharp, pointed edges — sleek and dynamic.\\n- Strong directional lighting enhances highlights and reflections.\\n- Premium, futuristic, and artistic impression.\\n\\n✨ CONDITIONAL STYLE LOGIC:\\nIF (type) = 'living':\\n- Add minimal, cute facial features (eyes, nose, mouth) consistent with the material.\\n- For reflective or metallic materials, engrave or subtly reflect facial features rather than painting them.\\n- Expressions should remain gentle and integrated naturally.\\n\\nIF (type) = 'non-living':\\n- DO NOT add any facial features.\\n- Focus on form, texture, lighting, and overall sculptural presence.\"\n}"
+      }
+    ]
   },
   {
     "category": "프롬프트",
-    "title": "UI 디자인 초안을 완성하는 미드저니 핵심 프롬프트 구조",
-    "image": "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=500&auto=format&fit=crop&q=60",
-    "link": "#"
-  },
-  {
-    "category": "아이디어 노트",
-    "title": "LLM API 연동형 프로토타입 인터페이스 기획안",
-    "image": "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=500&auto=format&fit=crop&q=60",
-    "link": "#"
-  },
-  {
-    "category": "AI 추천사이트",
-    "title": "2026년 웹 퍼블리셔와 디자이너를 위한 생산성 AI 툴 TOP 10",
-    "image": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=500&auto=format&fit=crop&q=60",
-    "link": "#"
-  },
-  {
-    "category": "AI 트렌드",
-    "title": "Figma AI와 Dev Mode가 바꾸는 디자이너-개발자 협업 워크플로우",
-    "image": "https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?w=500&auto=format&fit=crop&q=60",
-    "link": "#"
-  },
-  {
-    "category": "AINote",
-    "title": "시맨틱 마크업과 컴포넌트 설계를 위한 구조화 기법",
-    "image": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=500&auto=format&fit=crop&q=60",
-    "link": "#"
+    "title": "3D 피규어 의상 변경 프롬프트 – Google AI Studio 활용",
+    "output-image": "../images/2a2fdea8-0034-809e-a845-fbff1bfc8f5d.png",
+    "prompts": [
+      {
+        "title": "프롬프트",
+        "prompt-text": "Create a high-resolution 3D image of the first character wearing the outfit from the second image.\nKeep the face proportions, eyes, and mouth style exactly the same as the original figure.\nDo not alter or reshape the character's face or body structure in any way.\nMaintain the same figure ratio, proportions, and design — only change the outfit.\nRender the figure with a soft matte PVC texture, realistic lighting, and subtle shadows.\nUse a clean white studio background to emphasize the collectible figure look."
+      }
+    ]
   }
 ]

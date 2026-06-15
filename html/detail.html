@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세페이지</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* 상세페이지 전용 추가 스타일 */
+        .detail-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .detail-header {
+            margin-bottom: 30px;
+        }
+
+        .detail-header h1 {
+            font-size: 28px;
+            margin-top: 10px;
+            line-height: 1.4;
+            color: #1F2937;
+        }
+
+        .detail-content p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .output-image {
+            width: 100%;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .prompt-section {
+            margin-top: 36px;
+            padding-top: 24px;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .prompt-section h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1F2937;
+            margin-bottom: 14px;
+        }
+
+        .prompt-box {
+            background: #f1f3f5;
+            padding: 20px;
+            padding-top: 40px;
+            border-radius: 8px;
+            font-family: 'SFMono-Regular', Consolas, monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            position: relative;
+            margin: 12px 0 0 0;
+            color: #333;
+            white-space: pre-wrap;
+            word-break: break-word;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .prompt-box .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #7B39FD;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .prompt-box .copy-btn:hover {
+            background: #5e24d6;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #7B39FD;
+            font-weight: bold;
+            font-size: 15px;
+            transition: opacity 0.2s ease;
+        }
+
+        .back-btn:hover {
+            opacity: 0.7;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: #9CA3AF;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 상단 네비게이션 -->
+    <header>
+        <nav class="nav-bar">
+            <a href="../index.html" class="nav-item active">
+                <img src="../logo.svg" alt="AINote 로고" class="nav-logo">
+            </a>
+            <a href="../index.html" class="nav-item" data-category="프롬프트">프롬프트</a>
+            <a href="../index.html" class="nav-item" data-category="아이디어 노트">아이디어 노트</a>
+            <a href="../index.html" class="nav-item" data-category="AI 추천사이트">AI 추천사이트</a>
+            <a href="../index.html" class="nav-item" data-category="AI 트렌드">AI 트렌드</a>
+        </nav>
+    </header>
+
+    <!-- 상세 콘텐츠 영역 -->
+    <div class="detail-container" id="detail-container">
+        <a href="../index.html" class="back-btn">⬅️ 메인으로 돌아가기</a>
+
+        <div class="detail-header">
+            <span class="card-tag" id="detail-category"></span>
+            <h1 id="detail-title"></h1>
+        </div>
+
+        <div class="detail-content">
+            <!-- 아웃풋 이미지 -->
+            <img id="detail-output-image" class="output-image" src="" alt="" style="display:none;">
+
+            <!-- 프롬프트 목록이 여기에 동적으로 렌더링됨 -->
+            <div id="prompts-container"></div>
+        </div>
+    </div>
+
+    <script>
+        // URL 쿼리 파라미터에서 index 값을 가져옴
+        const params = new URLSearchParams(window.location.search);
+        const itemIndex = parseInt(params.get("index"), 10);
+
+        // data.json을 불러와 해당 인덱스의 데이터를 렌더링
+        fetch("../data.json")
+            .then(response => {
+                if (!response.ok) throw new Error("데이터를 불러올 수 없습니다.");
+                return response.json();
+            })
+            .then(data => {
+                if (isNaN(itemIndex) || itemIndex < 0 || itemIndex >= data.length) {
+                    showEmpty("존재하지 않는 콘텐츠입니다.");
+                    return;
+                }
+
+                const item = data[itemIndex];
+                renderDetail(item);
+            })
+            .catch(error => {
+                console.error("데이터 로드 실패:", error);
+                showEmpty("콘텐츠를 로드하지 못했습니다.");
+            });
+
+        function renderDetail(item) {
+            // 페이지 타이틀 업데이트
+            document.title = `상세페이지 - ${item.title}`;
+
+            // 카테고리 태그
+            document.getElementById("detail-category").textContent = item.category;
+
+            // 제목
+            document.getElementById("detail-title").textContent = item.title;
+
+            // 아웃풋 이미지
+            const imgEl = document.getElementById("detail-output-image");
+            if (item["output-image"]) {
+                imgEl.src = item["output-image"];
+                imgEl.alt = item.title;
+                imgEl.style.display = "block";
+            }
+
+            // 프롬프트 목록 렌더링
+            const promptsContainer = document.getElementById("prompts-container");
+
+            if (item.prompts && item.prompts.length > 0) {
+                item.prompts.forEach((promptItem, idx) => {
+                    const section = document.createElement("div");
+                    section.className = "prompt-section";
+
+                    const title = document.createElement("h3");
+                    title.textContent = promptItem.title || `프롬프트 ${idx + 1}`;
+                    section.appendChild(title);
+
+                    const box = document.createElement("div");
+                    box.className = "prompt-box";
+
+                    const textSpan = document.createElement("span");
+                    textSpan.className = "prompt-text";
+                    textSpan.textContent = promptItem["prompt-text"] || "";
+                    box.appendChild(textSpan);
+
+                    const copyBtn = document.createElement("button");
+                    copyBtn.className = "copy-btn";
+                    copyBtn.textContent = "복사";
+                    copyBtn.addEventListener("click", () => {
+                        const text = promptItem["prompt-text"] || "";
+                        navigator.clipboard.writeText(text).then(() => {
+                            copyBtn.textContent = "복사됨!";
+                            setTimeout(() => { copyBtn.textContent = "복사"; }, 2000);
+                        });
+                    });
+                    box.appendChild(copyBtn);
+
+                    section.appendChild(box);
+                    promptsContainer.appendChild(section);
+                });
+            } else {
+                promptsContainer.innerHTML = `<p style="color:#9CA3AF; margin-top:20px;">등록된 프롬프트가 없습니다.</p>`;
+            }
+        }
+
+        function showEmpty(message) {
+            document.getElementById("detail-container").innerHTML =
+                `<div class="empty-state"><p>${message}</p><a href="../index.html" class="back-btn" style="margin-top:20px;">⬅️ 메인으로 돌아가기</a></div>`;
+        }
+    </script>
+</body>
+</html>

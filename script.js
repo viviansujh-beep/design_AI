@@ -28,17 +28,19 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        cards.forEach(item => {
+        cards.forEach((item, index) => {
             // 링크 감싸기
             const aTag = document.createElement("a");
-            aTag.href = item.link || "#";
+            // data.json의 원본 인덱스를 찾아 detail.html로 연결
+            const originalIndex = allData.indexOf(item);
+            aTag.href = `html/detail.html?index=${originalIndex}`;
             aTag.classList.add("card-link");
 
             // 카드 레이아웃 바인딩
             aTag.innerHTML = `
                 <div class="card">
                     <div class="card-thumb">
-                        <img src="${item.image}" alt="${item.title}" loading="lazy">
+                        <img src="${item["output-image"]}" alt="${item.title}" loading="lazy">
                     </div>
                     <div class="card-body">
                         <span class="card-tag">${item.category}</span>
