@@ -36,11 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
             aTag.href = `html/detail.html?index=${originalIndex}`;
             aTag.classList.add("card-link");
 
+            const imageUrl = "./" + item["output-image"];
+
             // 카드 레이아웃 바인딩
             aTag.innerHTML = `
                 <div class="card">
                     <div class="card-thumb">
-                        <img src="${item["output-image"]}" alt="${item.title}" loading="lazy">
+                        <img src="${imageUrl}" alt="${item.title}" loading="lazy">
                     </div>
                     <div class="card-body">
                         <span class="card-tag">${item.category}</span>

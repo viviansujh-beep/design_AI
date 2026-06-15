@@ -180,7 +180,7 @@
             // 아웃풋 이미지
             const imgEl = document.getElementById("detail-output-image");
             if (item["output-image"]) {
-                imgEl.src = item["output-image"];
+                imgEl.src = "../" + item["output-image"];
                 imgEl.alt = item.title;
                 imgEl.style.display = "block";
             }
