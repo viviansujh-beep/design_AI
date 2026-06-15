@@ -35,4 +35,10 @@
     "image": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=500&auto=format&fit=crop&q=60",
     "link": "#"
   }
+  {
+    "category": "프롬프트",
+    "title": "[일관성] 내 캐릭터를 포켓몬 주인공으로",
+    "image": "images/pokemon.png",
+    "link": "detail_pokemon.html"
+  }
 ]

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세페이지 - 포켓몬 주인공 만들기</title>
+    <link rel="stylesheet" href="style.css"> <!-- 기존 스타일 재활용 -->
+    <style>
+        /* 상세페이지 전용 추가 스타일 */
+        .detail-container { max-width: 800px; margin: 60px auto; padding: 20px; background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .detail-header { margin-bottom: 30px; }
+        .detail-content img { width: 100%; border-radius: 12px; margin: 20px 0; }
+        .prompt-box { background: #f1f3f5; padding: 20px; border-radius: 8px; font-family: monospace; position: relative; margin: 20px 0; }
+        .back-btn { display: inline-block; margin-bottom: 20px; text-decoration: none; color: #7B39FD; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="detail-container">
+        <a href="index.html" class="back-btn">⬅️ 메인으로 돌아가기</a>
+        
+        <div class="detail-header">
+            <span class="card-tag">영문자연어</span>
+            <h1 style="font-size: 28px; margin-top: 10px;">[일관성] 내 캐릭터를 포켓몬 주인공으로</h1>
+        </div>
+
+        <div class="detail-content">
+            <p>피그마페디아의 꿀팁 내용을 여기에 정리합니다. 미드저니나 이미지 생성 AI를 활용해 일관성 있는 포켓몬 스타일의 캐릭터를 만드는 노하우입니다.</p>
+            
+            <!-- 상세 이미지 -->
+            <img src="images/pokemon.jpg" alt="포켓몬 예시">
+
+            <h3>사용한 AI 프롬프트 (Prompt)</h3>
+            <div class="prompt-box">
+                A cute girl character in Pokemon anime style, holding a pokeball, pikachu beside her, high quality, 3D render --ar 4:3
+            </div>
+
+            <h3>활용 방법 팁</h3>
+            <p style="line-height: 1.6; color: #555;">
+                1. 원본 캐릭터의 특징(머리 모양, 옷 색상)을 고정한 채 스타일에 'Pokemon style'을 부여합니다.<br>
+                2. 일관성을 유지하기 위해 `--cref` 옵션이나 시드(Seed) 번호를 활용하면 더욱 좋습니다.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
