@@ -1,5 +1,11 @@
 [
   {
+    "category": "프롬프트",
+    "title": "[일관성] 내 캐릭터를 포켓몬 주인공으로",
+    "image": "images/pokemon.png",
+    "link": "html/detail_pokemon.html"
+  },
+  {
     "category": "AINote",
     "title": "디자인 시스템 구축을 위한 AI 활용 가이드라인",
     "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=60",
@@ -34,11 +40,5 @@
     "title": "시맨틱 마크업과 컴포넌트 설계를 위한 구조화 기법",
     "image": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=500&auto=format&fit=crop&q=60",
     "link": "#"
-  },
-  {
-    "category": "프롬프트",
-    "title": "[일관성] 내 캐릭터를 포켓몬 주인공으로",
-    "image": "images/pokemon.png",
-    "link": "html/detail_pokemon.html"
   }
 ]
