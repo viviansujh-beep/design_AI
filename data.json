@@ -1,8 +1,8 @@
 [
   {
     "category": "프롬프트",
-    "title": "3D 콜렉터블 토이 스타일 아이콘 – 질감별 프롬프트 모음",
-    "sub-title": "",
+    "title": "3D 아이콘 질감별로 만들어보기 1탄",
+    "date-title": "2026.06.15",
     "output-image": "images/294fdea8-0034-806a-926f-ef9b8beb4d41.png",
     "prompts": [
       {
@@ -27,18 +27,37 @@
       },
       {
         "title": "통합 프롬프트(JSON)",
+        "hidden": true,
         "prompt-text": "{\n  \"name\": \"(이름)\",\n  \"type\": \"living | non-living\",\n  \"texture\": \"pvc | velvet | glass | balloon | metallic_sculpture\",\n  \"lighting\": \"auto\",\n  \"background\": \"#FFFFFF or #000000\",\n\n  \"prompt\": \"Create a 3D collectible toy-style icon of a cute (이름). This is NOT a flat or line icon. Follow the below style rules based on texture type.\\n\\n⚙️ GENERAL RULES:\\n- The object must be three-dimensional, soft in volume, and cleanly rendered.\\n- Use even, diffused lighting for soft materials and reflective, directional lighting for glossy ones.\\n- Keep the composition simple and centered.\\n- No text, logos, or external shadows.\\n- Background must be either pure white (#FFFFFF) or pure black (#000000).\\n\\n🎨 TEXTURE RULES:\\n\\n1️⃣ If texture = 'pvc':\\n- Matte vinyl texture, smooth and soft like a designer toy.\\n- Pastel warm tones, rounded shapes, and cute cozy mood.\\n\\n2️⃣ If texture = 'velvet':\\n- Short-fibered surface with subtle fabric sheen, cozy and elegant.\\n- Feels luxurious, soft to the touch, with diffused lighting that enhances depth.\\n\\n3️⃣ If texture = 'glass':\\n- Transparent, reflective, and glossy surface.\\n- Round, bubble-like form with refraction and caustic light effects.\\n- Light passes through softly, creating luminous reflections.\\n\\n4️⃣ If texture = 'balloon':\\n- Air-inflated shape with glossy latex surface.\\n- Slightly translucent, smooth, and shiny with curved reflections.\\n- Bright, cheerful tone with visible volume tension.\\n\\n5️⃣ If texture = 'metallic_sculpture':\\n- Highly polished chrome or titanium surface with mirror-like reflections.\\n- Form combines smooth curves and sharp, pointed edges — sleek and dynamic.\\n- Strong directional lighting enhances highlights and reflections.\\n- Premium, futuristic, and artistic impression.\\n\\n✨ CONDITIONAL STYLE LOGIC:\\nIF (type) = 'living':\\n- Add minimal, cute facial features (eyes, nose, mouth) consistent with the material.\\n- For reflective or metallic materials, engrave or subtly reflect facial features rather than painting them.\\n- Expressions should remain gentle and integrated naturally.\\n\\nIF (type) = 'non-living':\\n- DO NOT add any facial features.\\n- Focus on form, texture, lighting, and overall sculptural presence.\"\n}"
       }
     ]
   },
   {
     "category": "프롬프트",
-    "title": "3D 피규어 의상 변경 프롬프트 – Google AI Studio 활용",
+    "title": "질감&형태 3D 아이콘 질감별로 만들어보기 2탄",
+    "date-title": "2026.06.16",
     "output-image": "images/2a2fdea8-0034-809e-a845-fbff1bfc8f5d.png",
     "prompts": [
       {
         "title": "프롬프트",
         "prompt-text": "Create a high-resolution 3D image of the first character wearing the outfit from the second image.\nKeep the face proportions, eyes, and mouth style exactly the same as the original figure.\nDo not alter or reshape the character's face or body structure in any way.\nMaintain the same figure ratio, proportions, and design — only change the outfit.\nRender the figure with a soft matte PVC texture, realistic lighting, and subtle shadows.\nUse a clean white studio background to emphasize the collectible figure look."
+      }
+    ]
+  },
+  {
+    "category": "프롬프트",
+    "title": "[3D 캐릭터]드로잉 스케치하고 나노바나나로 3D 쿠키 캐릭터 만들기",
+    "date-title": "2026.06.16",
+    "output-image": "images/2a2fdea8-0034-809e-a845-fbff1bfc8f5d.png",
+    "prompts": [
+      {
+        "title": "1차 아웃풋 프롬프트",
+        "prompt-text": "Recreate this cookie mascot as a 3D animation-style character with a simpler, more minimal cookie texture. Keep the same rounded scallop shape and cute face, but remove fine crumbs or realistic surface details. The surface should be soft, smooth, and matte — like a stylized cookie from an animated film. Use a warm, even golden-beige tone with subtle shading, not grainy or overly baked. Keep the facial features simple: two oval eyes, a small smiling mouth, and tiny blush dots. Add soft volume and gentle lighting for a clean, friendly appearance. Lighting: soft diffused studio light with no harsh shadows, emphasizing simplicity and warmth. Background: pure white (#FFFFFF). style: minimal 3D render, animation style, smooth matte cookie surface, pastel tone, cute mascot design, clean and stylized look camera: eye-level, centered, full-body close-up"
+      },
+      {
+        "title": "2차 아웃풋 프롬프트",
+        "imageTop": "images/2a2fdea8-0034-809e-a845-fbff1bfc8f5d.png",
+        "prompt-text": "Create a high-quality 3D animation-style scene featuring the same cookie mascot character. Keep the original character exactly as it is — same color, shape, and face — and place it inside a cozy gingerbread-style bakery house inspired by Hansel and Gretel. The cookie mascot is wearing a small white baker’s hat, smiling warmly. The interior is made of sweets: chocolate walls, candy canes, icing decorations, and a glowing oven in the background. Lighting is warm, golden, and cinematic, with sunlight filtering softly through the candy windows. The overall mood feels magical and inviting, like a fairytale bakery scene. The cookie mascot stands near a cookie table or baking area, surrounded by pastries and sugar dust. Background should have soft depth of field to focus on the character. style: high-quality 3D animation, Pixar-style lighting, warm fairytale atmosphere, cinematic render, pastel tones, detailed environment camera: mid-shot, slightly low angle, focusing on the character at center"
       }
     ]
   }

@@ -9,7 +9,7 @@
         /* 상세페이지 전용 추가 스타일 */
         .detail-container {
             max-width: 800px;
-            margin: 60px auto;
+            margin: 10px auto 50px auto;
             padding: 20px;
             background: #fff;
             border-radius: 16px;
@@ -33,6 +33,12 @@
             margin-bottom: 20px;
         }
 
+        .date-title {
+            font-size: 16px;
+            color: #9CA3AF;
+            margin-bottom: 10px;
+        }
+
         .output-image {
             width: 100%;
             border-radius: 12px;
@@ -42,7 +48,7 @@
         .prompt-section {
             margin-top: 36px;
             padding-top: 24px;
-            border-top: 1px solid #E5E7EB;
+            /*border-top: 1px solid #E5E7EB;*/
         }
 
         .prompt-section h3 {
@@ -65,8 +71,15 @@
             color: #333;
             white-space: pre-wrap;
             word-break: break-word;
-            max-height: 400px;
-            overflow-y: auto;
+        }
+
+        .prompt-image {
+            width: 100%;
+            max-width: 720px;
+            display: block;
+            margin: 12px 0 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
         }
 
         .prompt-box .copy-btn {
@@ -92,8 +105,7 @@
             display: inline-block;
             margin-bottom: 20px;
             text-decoration: none;
-            color: #7B39FD;
-            font-weight: bold;
+            color: #4B5563;
             font-size: 15px;
             transition: opacity 0.2s ease;
         }
@@ -126,11 +138,12 @@
 
     <!-- 상세 콘텐츠 영역 -->
     <div class="detail-container" id="detail-container">
-        <a href="../index.html" class="back-btn">⬅️ 메인으로 돌아가기</a>
+        <a href="../index.html" class="back-btn inline-flex items-center text-sm text-gray-400 hover:text-white mb-8 transition-colors"><svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>목록으로 돌아가기</a>
 
         <div class="detail-header">
             <span class="card-tag" id="detail-category"></span>
             <h1 id="detail-title"></h1>
+            <p class="date-title" id="detail-date" style="margin-top: 8px;"></p>
         </div>
 
         <div class="detail-content">
@@ -161,11 +174,42 @@
 
                 const item = data[itemIndex];
                 renderDetail(item);
+                initPromptBoxScrollIndicator();
             })
             .catch(error => {
                 console.error("데이터 로드 실패:", error);
                 showEmpty("콘텐츠를 로드하지 못했습니다.");
             });
+
+        function initPromptBoxScrollIndicator() {
+            document.querySelectorAll('.prompt-box').forEach(box => {
+                let hideTimeout;
+                const updateIndicator = () => {
+                    const visibleHeight = box.clientHeight;
+                    const totalHeight = box.scrollHeight;
+                    if (totalHeight <= visibleHeight) {
+                        box.classList.remove('scroll-active');
+                        return;
+                    }
+
+                    const thumbHeight = Math.max((visibleHeight / totalHeight) * visibleHeight, 32);
+                    const maxTop = visibleHeight - thumbHeight - 16;
+                    const thumbTop = 8 + Math.min(maxTop, Math.max(0, (box.scrollTop / (totalHeight - visibleHeight)) * (visibleHeight - thumbHeight - 16)));
+
+                    box.style.setProperty('--scroll-thumb-height', `${thumbHeight}px`);
+                    box.style.setProperty('--scroll-thumb-top', `${thumbTop}px`);
+                    box.classList.add('scroll-active');
+
+                    window.clearTimeout(hideTimeout);
+                    hideTimeout = window.setTimeout(() => {
+                        box.classList.remove('scroll-active');
+                    }, 700);
+                };
+
+                box.addEventListener('scroll', updateIndicator, { passive: true });
+                box.addEventListener('pointerdown', updateIndicator);
+            });
+        }
 
         function renderDetail(item) {
             // 페이지 타이틀 업데이트
@@ -177,6 +221,12 @@
             // 제목
             document.getElementById("detail-title").textContent = item.title;
 
+            // 날짜
+            const dateEl = document.getElementById("detail-date");
+            if (item["date-title"]) {
+                dateEl.textContent = item["date-title"];
+            }
+
             // 아웃풋 이미지
             const imgEl = document.getElementById("detail-output-image");
             if (item["output-image"]) {
@@ -187,11 +237,26 @@
 
             // 프롬프트 목록 렌더링
             const promptsContainer = document.getElementById("prompts-container");
+            const visiblePrompts = item.prompts ? item.prompts.filter(promptItem => !promptItem.hidden) : [];
 
-            if (item.prompts && item.prompts.length > 0) {
-                item.prompts.forEach((promptItem, idx) => {
+            if (visiblePrompts.length > 0) {
+                visiblePrompts.forEach((promptItem, idx) => {
                     const section = document.createElement("div");
                     section.className = "prompt-section";
+
+                    // 제목이 정확히 '1차 아웃풋 프롬프트'인 섹션에만 전용 클래스 추가
+                    if (promptItem.title && promptItem.title.trim() === '1차 아웃풋 프롬프트') {
+                        section.classList.add('first-output-border');
+                    }
+
+                    // optional image above the prompt title
+                    if (promptItem.imageTop || promptItem.image) {
+                        const imgElTop = document.createElement('img');
+                        imgElTop.className = promptItem.imageTop ? 'output-image' : 'prompt-image';
+                        imgElTop.src = "../" + (promptItem.imageTop || promptItem.image);
+                        imgElTop.alt = promptItem.title || '';
+                        section.appendChild(imgElTop);
+                    }
 
                     const title = document.createElement("h3");
                     title.textContent = promptItem.title || `프롬프트 ${idx + 1}`;
@@ -218,6 +283,15 @@
                     box.appendChild(copyBtn);
 
                     section.appendChild(box);
+
+                    // optional image below the prompt box
+                    if (promptItem.imageBottom) {
+                        const imgElBot = document.createElement('img');
+                        imgElBot.className = 'prompt-image';
+                        imgElBot.src = "../" + promptItem.imageBottom;
+                        imgElBot.alt = promptItem.title || '';
+                        section.appendChild(imgElBot);
+                    }
                     promptsContainer.appendChild(section);
                 });
             } else {
@@ -227,8 +301,11 @@
 
         function showEmpty(message) {
             document.getElementById("detail-container").innerHTML =
-                `<div class="empty-state"><p>${message}</p><a href="../index.html" class="back-btn" style="margin-top:20px;">⬅️ 메인으로 돌아가기</a></div>`;
+                `<div class="empty-state"><p>${message}</p><a href="../index.html" class="back-btn inline-flex items-center text-sm text-gray-400 hover:text-white mb-8 transition-colors" style="margin-top:20px;"><svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>목록으로 돌아가기</a></div>`;
         }
     </script>
+    <footer class="site-footer">
+        &copy; 2026 AINote design by jinhwa. All rights reserved.
+    </footer>
 </body>
 </html>

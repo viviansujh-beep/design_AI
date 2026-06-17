@@ -11,7 +11,7 @@
         .detail-header { margin-bottom: 30px; }
         .detail-content img { width: 100%; border-radius: 12px; margin: 20px 0; }
         .prompt-box { background: #f1f3f5; padding: 20px; border-radius: 8px; font-family: monospace; position: relative; margin: 20px 0; }
-        .back-btn { display: inline-block; margin-bottom: 20px; text-decoration: none; color: #7B39FD; font-weight: bold; }
+        .back-btn { display: inline-block; margin-bottom: 20px; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -32,11 +32,12 @@
         </div>
     </header>
     <div class="detail-container">
-        <a href="index.html" class="back-btn">⬅️ 메인으로 돌아가기</a>
+        <a href="index.html" class="back-btn inline-flex items-center text-sm text-gray-400 hover:text-white mb-8 transition-colors"><svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>목록으로 돌아가기</a>
         
         <div class="detail-header">
             <span class="card-tag">영문자연어</span>
             <h1 style="font-size: 28px; margin-top: 10px;">[일관성] 내 캐릭터를 포켓몬 주인공으로</h1>
+            <p class="date-title" id="detail-date"></p>
         </div>
 
         <div class="detail-content">
@@ -58,5 +59,42 @@
         </div>
     </div>
 
+    <footer style="text-align: center; padding: 20px; color: #9CA3AF;">
+        &copy; 2026 AINote design by jinhwa. All rights reserved.
+    </footer>
+
+    <script>
+        function initPromptBoxScrollIndicator() {
+            document.querySelectorAll('.prompt-box').forEach(box => {
+                let hideTimeout;
+                const updateIndicator = () => {
+                    const visibleHeight = box.clientHeight;
+                    const totalHeight = box.scrollHeight;
+                    if (totalHeight <= visibleHeight) {
+                        box.classList.remove('scroll-active');
+                        return;
+                    }
+
+                    const thumbHeight = Math.max((visibleHeight / totalHeight) * visibleHeight, 32);
+                    const maxTop = visibleHeight - thumbHeight - 16;
+                    const thumbTop = 8 + Math.min(maxTop, Math.max(0, (box.scrollTop / (totalHeight - visibleHeight)) * (visibleHeight - thumbHeight - 16)));
+
+                    box.style.setProperty('--scroll-thumb-height', `${thumbHeight}px`);
+                    box.style.setProperty('--scroll-thumb-top', `${thumbTop}px`);
+                    box.classList.add('scroll-active');
+
+                    window.clearTimeout(hideTimeout);
+                    hideTimeout = window.setTimeout(() => {
+                        box.classList.remove('scroll-active');
+                    }, 700);
+                };
+
+                box.addEventListener('scroll', updateIndicator, { passive: true });
+                box.addEventListener('pointerdown', updateIndicator);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', initPromptBoxScrollIndicator);
+    </script>
 </body>
 </html>

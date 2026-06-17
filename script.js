@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="card-body">
                         <span class="card-tag">${item.category}</span>
                         <h3 class="card-title">${item.title}</h3>
+                        ${item["date-title"] ? `<p class="card-date">${item["date-title"]}</p>` : ''}
                     </div>
                 </div>
             `;
